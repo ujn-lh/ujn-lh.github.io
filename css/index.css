@@ -232,6 +232,8 @@ img:not([src]) {
   color: #90a4ae;
   font-size: 14px;
   line-height: 20px;
+  counter-reset: line;
+  white-space: pre-wrap;
 }
 figure.highlight {
   position: relative;
@@ -281,6 +283,15 @@ blockquote {
 .article-container .highlight .line::selection {
   background: rgba(128,203,196,0.251);
   color: #90a4ae;
+}
+.article-container .highlight .line:before {
+  display: inline-block;
+  padding: 0 0.3rem 0 0;
+  min-width: 1.6rem;
+  color: #cfd8dc;
+  content: counter(line);
+  counter-increment: line;
+  text-align: left;
 }
 .article-container .highlight table {
   position: relative;
@@ -2138,7 +2149,7 @@ footer:before {
 .note h4,
 .note h5,
 .note h6 {
-  margin-top: 3px;
+  margin-top: 0;
   border-bottom: initial;
   margin-bottom: 0;
   padding-top: 0 !important;
@@ -2161,16 +2172,6 @@ footer:before {
 .note img:last-child {
   margin-bottom: 0 !important;
 }
-.note:not(.no-icon) {
-  padding-left: 45px;
-}
-.note:not(.no-icon)::before {
-  font-family: 'FontAwesome';
-  font-size: larger;
-  left: 15px;
-  position: absolute;
-  top: 13px;
-}
 .note.default {
   border-left-color: #777;
 }
@@ -2179,10 +2180,6 @@ footer:before {
 .note.default h4,
 .note.default h5,
 .note.default h6 {
-  color: #777;
-}
-.note.default:not(.no-icon)::before {
-  content: "\f0a9";
   color: #777;
 }
 .note.primary {
@@ -2195,10 +2192,6 @@ footer:before {
 .note.primary h6 {
   color: #6f42c1;
 }
-.note.primary:not(.no-icon)::before {
-  content: "\f055";
-  color: #6f42c1;
-}
 .note.info {
   border-left-color: #428bca;
 }
@@ -2207,10 +2200,6 @@ footer:before {
 .note.info h4,
 .note.info h5,
 .note.info h6 {
-  color: #428bca;
-}
-.note.info:not(.no-icon)::before {
-  content: "\f05a";
   color: #428bca;
 }
 .note.success {
@@ -2223,10 +2212,6 @@ footer:before {
 .note.success h6 {
   color: #5cb85c;
 }
-.note.success:not(.no-icon)::before {
-  content: "\f058";
-  color: #5cb85c;
-}
 .note.warning {
   border-left-color: #f0ad4e;
 }
@@ -2237,10 +2222,6 @@ footer:before {
 .note.warning h6 {
   color: #f0ad4e;
 }
-.note.warning:not(.no-icon)::before {
-  content: "\f06a";
-  color: #f0ad4e;
-}
 .note.danger {
   border-left-color: #d9534f;
 }
@@ -2249,10 +2230,6 @@ footer:before {
 .note.danger h4,
 .note.danger h5,
 .note.danger h6 {
-  color: #d9534f;
-}
-.note.danger:not(.no-icon)::before {
-  content: "\f056";
   color: #d9534f;
 }
 .recent-post-item .content {
